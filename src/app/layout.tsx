@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,21 +18,55 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ChamTech | Deivid Vanegas",
-  description:
-      "Portfolio of Deivid Vanegas, Backend and Integration Developer focused on Java, Spring Boot, MuleSoft, DataWeave and REST APIs.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: "%s | ChamTech",
+  },
+  description: siteConfig.description,
+  keywords: [
+    "Deivid Vanegas",
+    "Java Developer",
+    "Spring Boot",
+    "MuleSoft",
+    "DataWeave",
+    "Backend Developer",
+    "Integration Developer",
+    "REST APIs",
+  ],
+  authors: [{ name: siteConfig.author, url: siteConfig.linkedin }],
+  creator: siteConfig.author,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ["/opengraph-image"],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en">
+    <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-      {children}
+        <SiteHeader />
+        {children}
+        <SiteFooter />
       </body>
-      </html>
+    </html>
   );
 }
