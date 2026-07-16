@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "ChamTech Sync Playground | Deivid Vanegas",
   description:
     "Interactive simulation of a MuleSoft-to-Spring Boot order synchronization flow with pagination, correlation IDs and canonical JSON transformation.",
-  alternates: { canonical: "/playground" },
+  alternates: { canonical: "/playground", languages: { en: "/playground", es: "/es/playground" } },
   openGraph: {
     title: "ChamTech Sync Playground | Deivid Vanegas",
     description:

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: siteConfig.author, url: siteConfig.linkedin }],
   creator: siteConfig.author,
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { en: "/", es: "/es" } },
   openGraph: {
     type: "website",
     locale: "en_US",

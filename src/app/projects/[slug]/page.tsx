@@ -20,7 +20,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   return {
     title: project.name,
     description: project.description,
-    alternates: { canonical: `/projects/${project.slug}` },
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+      languages: { en: `/projects/${project.slug}`, es: `/es/projects/${project.slug}` },
+    },
     openGraph: {
       title: `${project.name} | ChamTech`,
       description: project.description,

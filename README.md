@@ -30,6 +30,9 @@ ChamTech is a personal software laboratory and project ecosystem. It is not a co
 - `/playground`
 - `/robots.txt`
 - `/sitemap.xml`
+- `/es` and localized equivalents for the playground and both case studies
+
+The site keeps English as the default language and exposes shareable Spanish URLs. The `EN / ES` control preserves the equivalent page while technical contracts, source identifiers and JSON payloads remain unchanged.
 
 ## Local development
 

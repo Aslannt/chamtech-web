@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { localeFromPath, localePath, translate } from "@/lib/i18n";
 
 const navigation = [
   { label: "Home", href: "/#home" },
@@ -15,6 +17,9 @@ const navigation = [
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const locale = localeFromPath(pathname);
+  const t = (value: string) => translate(locale, value);
 
   useEffect(() => {
     function closeMenuWithEscape(event: KeyboardEvent) {
@@ -34,7 +39,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-[72px] max-w-[1180px] items-center justify-between px-6 sm:px-8">
         <Link
-          href="/"
+          href={localePath(locale, "/")}
           aria-label="ChamTech home"
           className="group inline-flex flex-col"
         >
@@ -46,29 +51,37 @@ export function SiteHeader() {
           </span>
 
           <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted">
-            Personal software lab
+            {t("Personal software lab")}
           </span>
         </Link>
 
         <nav
-          aria-label="Primary navigation"
+          aria-label={t("Primary navigation")}
           className="hidden items-center gap-7 lg:flex"
         >
           {navigation.map((item) => (
             <Link
               key={item.label}
-              href={item.href}
+              href={localePath(locale, item.href)}
               className="text-sm text-muted transition-colors hover:text-foreground"
             >
-              {item.label}
+              {t(item.label)}
             </Link>
           ))}
 
           <Link
-            href="/#contact"
+            href={localePath(locale, "/#contact")}
             className="rounded-full border border-primary/60 px-5 py-2 text-sm font-semibold text-primary-bright transition-colors hover:border-primary-bright hover:bg-primary/10"
           >
-            Let&apos;s talk
+            {t("Let's talk")}
+          </Link>
+          <Link
+            href={locale === "en" ? localePath("es", pathname) : localePath("en", pathname)}
+            hrefLang={locale === "en" ? "es" : "en"}
+            className="font-mono text-[10px] font-semibold text-muted transition-colors hover:text-primary-bright"
+            aria-label={locale === "en" ? "Ver en español" : "View in English"}
+          >
+            {locale === "en" ? "ES" : "EN"}
           </Link>
         </nav>
 
@@ -76,7 +89,7 @@ export function SiteHeader() {
           type="button"
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-label={t(menuOpen ? "Close navigation menu" : "Open navigation menu")}
           onClick={() => setMenuOpen((current) => !current)}
           className="inline-flex size-11 items-center justify-center rounded-full border border-border bg-surface text-foreground transition-colors hover:border-primary lg:hidden"
         >
@@ -108,7 +121,7 @@ export function SiteHeader() {
 
       <nav
         id="mobile-navigation"
-        aria-label="Mobile navigation"
+        aria-label={t("Mobile navigation")}
         className={`border-t border-border bg-background/95 px-6 py-5 backdrop-blur-xl lg:hidden ${
           menuOpen ? "block" : "hidden"
         }`}
@@ -117,20 +130,28 @@ export function SiteHeader() {
           {navigation.map((item) => (
             <Link
               key={item.label}
-              href={item.href}
+              href={localePath(locale, item.href)}
               onClick={() => setMenuOpen(false)}
               className="border-b border-border/70 py-4 text-sm text-muted transition-colors hover:text-foreground"
             >
-              {item.label}
+              {t(item.label)}
             </Link>
           ))}
 
           <Link
-            href="/#contact"
+            href={localePath(locale, "/#contact")}
             onClick={() => setMenuOpen(false)}
             className="mt-5 rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-white"
           >
-            Let&apos;s talk
+            {t("Let's talk")}
+          </Link>
+          <Link
+            href={locale === "en" ? localePath("es", pathname) : localePath("en", pathname)}
+            hrefLang={locale === "en" ? "es" : "en"}
+            onClick={() => setMenuOpen(false)}
+            className="mt-4 text-center font-mono text-xs text-muted"
+          >
+            {locale === "en" ? "Español" : "English"}
           </Link>
         </div>
       </nav>
