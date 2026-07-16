@@ -13,6 +13,7 @@ export type Certification = {
   badge: string;
   issuer: string;
   credentialUrl?: string;
+  credentialCode?: string;
   content: Record<CertificationLocale, LocalizedCertification>;
 };
 
@@ -64,25 +65,26 @@ export const certifications: Certification[] = [
     },
   },
   {
-    id: "scrum-fundamentals-2023",
-    badge: "SFC",
-    issuer: "SCRUMstudy",
+    id: "docker-professional-2024",
+    badge: "DKR",
+    issuer: "Código Facilito",
+    credentialCode: "2c8ff266-e2e5-43aa-9366-1fb203e6d0e8",
     content: {
       en: {
-        title: "Scrum Fundamentals Certified",
-        type: "Professional certification",
-        issued: "Issued in 2023",
+        title: "Professional Docker Course",
+        type: "Course completion",
+        issued: "Completed November 24, 2024",
         summary:
-          "Foundational knowledge of Scrum principles, responsibilities and iterative software delivery practices.",
-        focus: "Agile delivery",
+          "Practical training in container images, repeatable environments and Docker-based software delivery workflows.",
+        focus: "Containers",
       },
       es: {
-        title: "Scrum Fundamentals Certified",
-        type: "Certificación profesional",
-        issued: "Emitida en 2023",
+        title: "Curso Profesional de Docker",
+        type: "Curso completado",
+        issued: "Completado el 24 de noviembre de 2024",
         summary:
-          "Conocimientos fundamentales sobre principios Scrum, responsabilidades y prácticas iterativas de entrega de software.",
-        focus: "Entrega ágil",
+          "Formación práctica en imágenes, entornos reproducibles y flujos de entrega de software basados en Docker.",
+        focus: "Contenedores",
       },
     },
   },
