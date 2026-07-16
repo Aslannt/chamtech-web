@@ -23,7 +23,7 @@ export function Contact() {
             <div>
               <div id="contact-title">
                 <SectionHeading
-                  eyebrow="07 / Contact"
+                  eyebrow="08 / Contact"
                   title="Let’s build something reliable."
                   description="I’m open to conversations about backend development, enterprise integration and Java or MuleSoft opportunities."
                 />
