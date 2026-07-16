@@ -21,22 +21,22 @@ export const certifications: Certification[] = [
   {
     id: "oci-ai-foundations-2025",
     badge: "OCI",
-    issuer: "Oracle University",
+    issuer: "Oracle",
     content: {
       en: {
         title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
         type: "Professional certification",
-        issued: "Issued in 2025",
+        issued: "Issued March 3, 2026 · Valid until March 3, 2028",
         summary:
-          "A foundational credential connecting artificial intelligence concepts with the Oracle Cloud Infrastructure ecosystem.",
+          "A foundational credential connecting artificial intelligence, machine learning, generative AI and Oracle Cloud Infrastructure services.",
         focus: "Cloud & AI",
       },
       es: {
         title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
         type: "Certificación profesional",
-        issued: "Emitida en 2025",
+        issued: "Emitida el 3 de marzo de 2026 · Válida hasta el 3 de marzo de 2028",
         summary:
-          "Una credencial fundamental que conecta conceptos de inteligencia artificial con el ecosistema de Oracle Cloud Infrastructure.",
+          "Una credencial fundamental que conecta inteligencia artificial, machine learning, IA generativa y servicios de Oracle Cloud Infrastructure.",
         focus: "Cloud e IA",
       },
     },
