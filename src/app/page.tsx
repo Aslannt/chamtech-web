@@ -16,11 +16,11 @@ export default function Home() {
       <About />
       <Skills />
       <Experience />
-      <Certifications />
       <Architecture />
       <PlaygroundInvitation />
       <Projects />
       <Verification />
+      <Certifications />
       <Contact />
     </main>
   );
