@@ -8,21 +8,23 @@ import { siteConfig } from "@/lib/site";
 
 const sectionCopy = {
   en: {
-    eyebrow: "Selected credentials",
+    eyebrow: "07 / Selected credentials",
     title: "Credentials that reinforce the stack.",
     description:
-      "A focused selection of certifications and structured programs aligned with cloud, artificial intelligence, agile delivery and software engineering.",
+      "A focused selection of certifications and structured programs aligned with cloud, artificial intelligence, containers and software engineering.",
     credential: "View credential",
+    credentialCode: "Credential code",
     linkedin: "See credential history on LinkedIn",
     note:
       "Only the credentials most relevant to my current backend and integration profile are highlighted here.",
   },
   es: {
-    eyebrow: "Credenciales seleccionadas",
+    eyebrow: "07 / Credenciales seleccionadas",
     title: "Credenciales que respaldan el stack.",
     description:
-      "Una selección enfocada de certificaciones y programas estructurados relacionados con cloud, inteligencia artificial, entrega ágil e ingeniería de software.",
+      "Una selección enfocada de certificaciones y programas estructurados relacionados con cloud, inteligencia artificial, contenedores e ingeniería de software.",
     credential: "Ver credencial",
+    credentialCode: "Código de credencial",
     linkedin: "Ver historial de credenciales en LinkedIn",
     note:
       "Aquí se destacan únicamente las credenciales más relevantes para mi perfil actual de backend e integración.",
@@ -79,6 +81,11 @@ export function Certifications() {
                   <p className="mt-4 text-sm leading-7 text-muted">
                     {content.summary}
                   </p>
+                  {certification.credentialCode ? (
+                    <p className="mt-4 break-all font-mono text-[10px] leading-5 text-muted">
+                      {copy.credentialCode}: {certification.credentialCode}
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
