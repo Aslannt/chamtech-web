@@ -10,7 +10,7 @@ export const experience = [
     {
         company: "PHIDIMENSIONS",
         role: "MuleSoft & Integration Developer",
-        period: "June 2024 – Present",
+        period: "July 2024 – Present",
         highlights: [
             "Development, maintenance and migration of REST APIs and ETL processes with MuleSoft.",
             "Integration between services, applications and Oracle databases.",
