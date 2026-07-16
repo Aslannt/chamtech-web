@@ -1,3 +1,4 @@
+import { LocalizedExperiencePeriod } from "@/components/ui/localized-profile-links";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { experience } from "@/data/experience";
 
@@ -38,7 +39,7 @@ export function Experience() {
                                     </div>
 
                                     <p className="w-fit rounded-full border border-border bg-background px-4 py-2 font-mono text-xs text-muted">
-                                        {item.period}
+                                        <LocalizedExperiencePeriod period={item.period} />
                                     </p>
                                 </div>
 
