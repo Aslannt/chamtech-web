@@ -1,3 +1,4 @@
+import { ContactCvDownloadLink } from "@/components/ui/localized-profile-links";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { siteConfig } from "@/lib/site";
 
@@ -6,7 +7,7 @@ const links = [
   {
     label: "LinkedIn",
     value: "Deivid Vanegas",
-    href: "https://www.linkedin.com/in/deivid-vanegas-7b2ab1283/",
+    href: "https://www.linkedin.com/in/deivid-vanegas/",
   },
 ];
 
@@ -65,18 +66,7 @@ export function Contact() {
                 </a>
               ))}
 
-              <a
-                href="/cv/deivid-vanegas-cv-es.pdf"
-                download
-                hrefLang="es"
-                className="flex items-center justify-between rounded-2xl border border-border bg-background p-5 transition-colors hover:border-primary"
-              >
-                <span>
-                  <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Curriculum vitae</span>
-                  <span className="mt-2 block text-sm font-semibold">Download CV · Spanish</span>
-                </span>
-                <span aria-hidden="true" className="text-primary-bright">↓</span>
-              </a>
+              <ContactCvDownloadLink />
             </div>
           </div>
         </div>
