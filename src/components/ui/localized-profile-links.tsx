@@ -12,6 +12,19 @@ function useLocale() {
   return localeFromPath(usePathname());
 }
 
+export function LocalizedExperiencePeriod({ period }: { period: string }) {
+  const locale = useLocale();
+
+  if (locale === "es") {
+    if (period === "July 2024 – Present") return "Julio de 2024 – Actualidad";
+    if (period === "October 2022 – December 2023") {
+      return "Octubre de 2022 – Diciembre de 2023";
+    }
+  }
+
+  return period;
+}
+
 export function HeroCvDownloadLink() {
   const locale = useLocale();
 
