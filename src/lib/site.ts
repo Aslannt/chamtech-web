@@ -12,5 +12,5 @@ export const siteConfig = {
   author: "Deivid Vanegas",
   email: "deivid.vengas@gmail.com",
   github: "https://github.com/Aslannt",
-  linkedin: "https://www.linkedin.com/in/deivid-vanegas-7b2ab1283/",
+  linkedin: "https://www.linkedin.com/in/deivid-vanegas/",
 };
