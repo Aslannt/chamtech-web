@@ -1,3 +1,5 @@
+import { HeroCvDownloadLink } from "@/components/ui/localized-profile-links";
+
 const architectureNodes = [
   "API Consumer",
   "MuleSoft",
@@ -56,13 +58,7 @@ export function Hero() {
               View my work
             </a>
 
-            <a
-              href="/cv/deivid-vanegas-cv-es.pdf"
-              download
-              className="w-full rounded-full border border-border bg-surface px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary-bright sm:w-auto"
-            >
-              Download CV <span className="font-mono text-[10px] text-muted">ES</span>
-            </a>
+            <HeroCvDownloadLink />
           </div>
 
           <div className="mt-7 flex items-center justify-center gap-6 font-mono text-xs text-muted">
@@ -80,7 +76,7 @@ export function Hero() {
             </span>
 
             <a
-              href="https://www.linkedin.com/in/deivid-vanegas-7b2ab1283/"
+              href="https://www.linkedin.com/in/deivid-vanegas/"
               target="_blank"
               rel="noreferrer"
               className="transition-colors hover:text-primary-bright"
