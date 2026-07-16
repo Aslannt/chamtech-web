@@ -4,6 +4,7 @@ import { Contact } from "@/components/sections/contact";
 import { Experience } from "@/components/sections/experience";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
+import { PlaygroundInvitation } from "@/components/sections/playground-invitation";
 import { Skills } from "@/components/sections/skills";
 import { Verification } from "@/components/sections/verification";
 
@@ -15,6 +16,7 @@ export default function Home() {
       <Skills />
       <Experience />
       <Architecture />
+      <PlaygroundInvitation />
       <Projects />
       <Verification />
       <Contact />

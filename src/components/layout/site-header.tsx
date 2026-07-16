@@ -10,6 +10,7 @@ const navigation = [
   { label: "Experience", href: "/#experience" },
   { label: "Architecture", href: "/#architecture" },
   { label: "Projects", href: "/#projects" },
+  { label: "Playground", href: "/playground" },
 ];
 
 export function SiteHeader() {

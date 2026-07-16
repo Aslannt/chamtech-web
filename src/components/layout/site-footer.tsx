@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EasterEggLauncher } from "@/components/lab/easter-egg-launcher";
 
 export function SiteFooter() {
   return (
@@ -7,12 +8,15 @@ export function SiteFooter() {
         <p>
           © 2026 Deivid Vanegas. ChamTech is a personal software lab.
         </p>
-        <Link
-          href="/#home"
-          className="font-mono text-xs transition-colors hover:text-primary-bright"
-        >
-          Back to top ↑
-        </Link>
+        <div className="flex items-center gap-4">
+          <EasterEggLauncher />
+          <Link
+            href="/#home"
+            className="font-mono text-xs transition-colors hover:text-primary-bright"
+          >
+            Back to top ↑
+          </Link>
+        </div>
       </div>
     </footer>
   );

@@ -20,12 +20,14 @@ ChamTech is a personal software laboratory and project ecosystem. It is not a co
 - Cham Orders Mule Integration case study
 - Verified testing and local execution metrics
 - Direct email, GitHub, LinkedIn and Spanish CV links
+- Interactive Sync Playground using the real MuleSoft and Spring Boot contracts
 
 ## Routes
 
 - `/`
 - `/projects/cham-orders-api`
 - `/projects/cham-orders-mule-integration`
+- `/playground`
 - `/robots.txt`
 - `/sitemap.xml`
 
@@ -49,10 +51,31 @@ Open `http://localhost:3000`.
 
 ```bash
 npm run lint
+npm run test
 npm run build
 ```
 
-The project uses Server Components by default. The responsive mobile navigation is the only client component currently required.
+The project uses Server Components by default. Client Components are isolated to the responsive navigation and the interactive playground shell.
+
+## Interactive Sync Playground
+
+`/playground` is an educational browser simulation of the Cham Orders integration flow. It demonstrates:
+
+- RAML request validation for `POST /api/v1/order-sync`.
+- Correlation ID propagation or safe synthetic generation.
+- Authentication and Bearer context without displaying credentials or tokens.
+- Sequential confirmed-order pagination.
+- Stable MuleSoft error contracts.
+- TypeScript transformation into the real canonical JSON model.
+- Browser-only JSON copying and download.
+
+The playground uses synthetic data and simulated execution steps. It does not call Cham Orders API, run MuleSoft, connect to PostgreSQL, persist data, expose credentials or represent a production ERP integration.
+
+Run it locally with `npm run dev`, open `http://localhost:3000/playground`, and validate changes with `npm run test`, `npm run lint` and `npm run build`.
+
+## ChamTech Lab easter egg
+
+The discreet egg in the footer opens a lazy-loaded terminal mini-game. Data Snake supports Arrow keys, WASD, touch controls, pause/resume, Escape to close and a browser-local high score. Its movement and collision engine is covered by Vitest.
 
 ## CV
 
