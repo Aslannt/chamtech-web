@@ -19,7 +19,7 @@ ChamTech is a personal software laboratory and project ecosystem. It is not a co
 - Cham Orders API case study
 - Cham Orders Mule Integration case study
 - Verified testing and local execution metrics
-- Direct email, GitHub, LinkedIn and Spanish CV links
+- Direct email, GitHub, LinkedIn and localized CV links
 - Interactive Sync Playground using the real MuleSoft and Spring Boot contracts
 
 ## Routes
@@ -58,7 +58,7 @@ npm run test
 npm run build
 ```
 
-The project uses Server Components by default. Client Components are isolated to the responsive navigation and the interactive playground shell.
+The project uses Server Components by default. Client Components are isolated to the responsive navigation, localized profile links and the interactive playground shell.
 
 ## Interactive Sync Playground
 
@@ -82,11 +82,14 @@ The discreet egg in the footer opens a lazy-loaded terminal mini-game. Data Snak
 
 ## CV
 
-The downloadable Spanish CV must exist at:
+The localized downloadable CV files must exist at:
 
 ```text
+public/cv/deivid-vanegas-cv-en.pdf
 public/cv/deivid-vanegas-cv-es.pdf
 ```
+
+English routes download the English CV and Spanish routes download the Spanish CV.
 
 ## Site URL
 
@@ -101,4 +104,4 @@ The portfolio reports 38 Java tests, 12 MUnit tests and two locally verified Rel
 **Deivid Vanegas**
 
 - GitHub: https://github.com/Aslannt
-- LinkedIn: https://www.linkedin.com/in/deivid-vanegas-7b2ab1283/
+- LinkedIn: https://www.linkedin.com/in/deivid-vanegas/
