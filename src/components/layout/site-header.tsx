@@ -10,6 +10,7 @@ const navigation = [
   { label: "About", href: "/#about" },
   { label: "Skills", href: "/#skills" },
   { label: "Experience", href: "/#experience" },
+  { label: "Certifications", href: "/#certifications" },
   { label: "Architecture", href: "/#architecture" },
   { label: "Projects", href: "/#projects" },
   { label: "Playground", href: "/playground" },
@@ -20,6 +21,8 @@ export function SiteHeader() {
   const pathname = usePathname();
   const locale = localeFromPath(pathname);
   const t = (value: string) => translate(locale, value);
+  const navigationLabel = (label: string) =>
+    label === "Certifications" && locale === "es" ? "Certificaciones" : t(label);
 
   useEffect(() => {
     function closeMenuWithEscape(event: KeyboardEvent) {
@@ -57,7 +60,7 @@ export function SiteHeader() {
 
         <nav
           aria-label={t("Primary navigation")}
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-5 lg:flex xl:gap-7"
         >
           {navigation.map((item) => (
             <Link
@@ -65,7 +68,7 @@ export function SiteHeader() {
               href={localePath(locale, item.href)}
               className="text-sm text-muted transition-colors hover:text-foreground"
             >
-              {t(item.label)}
+              {navigationLabel(item.label)}
             </Link>
           ))}
 
@@ -134,7 +137,7 @@ export function SiteHeader() {
               onClick={() => setMenuOpen(false)}
               className="border-b border-border/70 py-4 text-sm text-muted transition-colors hover:text-foreground"
             >
-              {t(item.label)}
+              {navigationLabel(item.label)}
             </Link>
           ))}
 
