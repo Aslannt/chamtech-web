@@ -7,70 +7,91 @@ export function Experience() {
         <section
             id="experience"
             aria-labelledby="experience-title"
-            className="scroll-mt-28 border-t border-border py-24 sm:py-28"
+            className="scroll-mt-24 border-t border-border py-24 sm:py-32"
         >
             <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
                 <div id="experience-title">
                     <SectionHeading
                         eyebrow="03 / Experience"
-                        title="Building systems that need to connect."
+                        title="Building systems that"
+                        accent="need to connect."
                         description="Professional experience across enterprise integration, APIs, data processing and application development."
                     />
                 </div>
 
-                <ol className="relative mt-14 space-y-8 border-l border-border pl-8 sm:pl-10">
-                    {experience.map((item) => (
-                        <li key={`${item.company}-${item.role}`} className="relative">
-              <span
-                  aria-hidden="true"
-                  className="absolute -left-[41px] top-8 size-4 rounded-full border-4 border-background bg-primary sm:-left-[49px]"
-              />
-
-                            <article className="surface-card rounded-2xl p-6 sm:p-8">
-                                <div className="flex flex-col justify-between gap-5 md:flex-row md:items-start">
-                                    <div>
-                                        <p className="font-mono text-xs tracking-[0.16em] text-primary-bright">
-                                            {item.company}
-                                        </p>
-
-                                        <h3 className="mt-3 text-2xl font-semibold tracking-tight">
-                                            {item.role}
-                                        </h3>
-                                    </div>
-
-                                    <p className="w-fit rounded-full border border-border bg-background px-4 py-2 font-mono text-xs text-muted">
+                <ol data-reveal className="relative mt-16">
+                    <span
+                        aria-hidden="true"
+                        className="draw-line-y absolute bottom-0 left-[7px] top-2 w-px bg-border md:left-[calc(16rem+7px)]"
+                    />
+                    {experience.map((item, index) => {
+                        const isCurrent = "current" in item && item.current;
+                        return (
+                            <li
+                                key={`${item.company}-${item.role}`}
+                                data-reveal
+                                style={{ "--delay": `${index * 110}ms` } as React.CSSProperties}
+                                className="relative grid gap-4 pb-14 pl-10 last:pb-0 md:grid-cols-[16rem_1fr] md:gap-0 md:pl-0"
+                            >
+                                <div className="md:pr-12 md:pt-1 md:text-right">
+                                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
                                         <LocalizedExperiencePeriod period={item.period} />
                                     </p>
+                                    {item.context ? (
+                                        <p className="mt-2 text-xs text-muted/80">{item.context}</p>
+                                    ) : null}
                                 </div>
 
-                                <ul className="mt-7 grid gap-3">
-                                    {item.highlights.map((highlight) => (
-                                        <li
-                                            key={highlight}
-                                            className="flex gap-3 text-sm leading-7 text-muted"
-                                        >
-                      <span
-                          aria-hidden="true"
-                          className="mt-[11px] size-1.5 shrink-0 rounded-full bg-primary"
-                      />
-                                            <span>{highlight}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                <span
+                                    aria-hidden="true"
+                                    className={`absolute left-0 top-1.5 grid size-[15px] place-items-center rounded-full border md:left-64 ${
+                                        isCurrent
+                                            ? "border-primary bg-primary/15"
+                                            : "border-border bg-background"
+                                    }`}
+                                >
+                                    <span
+                                        className={`size-[5px] rounded-full ${
+                                            isCurrent ? "pulse-dot bg-primary text-primary" : "bg-muted/60"
+                                        }`}
+                                    />
+                                </span>
 
-                                <div className="mt-7 flex flex-wrap gap-2 border-t border-border/70 pt-6">
-                                    {item.technologies.map((technology) => (
-                                        <span
-                                            key={technology}
-                                            className="rounded-full border border-border bg-background px-3 py-2 font-mono text-xs text-muted"
-                                        >
-                      {technology}
-                    </span>
-                                    ))}
-                                </div>
-                            </article>
-                        </li>
-                    ))}
+                                <article className="md:pl-12">
+                                    <div className="flex flex-wrap items-center gap-3">
+                                        <p className="font-mono text-xs font-semibold tracking-[0.18em] text-primary-bright">
+                                            {item.company}
+                                        </p>
+                                        {isCurrent ? (
+                                            <span className="rounded-full bg-primary px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-white">
+                                                Now
+                                            </span>
+                                        ) : null}
+                                    </div>
+
+                                    <h3 className="mt-2 text-[1.75rem] font-light tracking-[-0.035em]">
+                                        {item.role}
+                                    </h3>
+
+                                    <ul className="mt-5 grid max-w-3xl gap-2.5">
+                                        {item.highlights.map((highlight) => (
+                                            <li
+                                                key={highlight}
+                                                className="flex gap-3 text-[15px] leading-7 text-muted"
+                                            >
+                                                <span aria-hidden="true" className="mt-[13px] h-px w-3 shrink-0 bg-primary" />
+                                                <span>{highlight}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <p data-no-translate className="mt-5 font-mono text-[11px] leading-6 text-muted">
+                                        {item.technologies.join("  ·  ")}
+                                    </p>
+                                </article>
+                            </li>
+                        );
+                    })}
                 </ol>
             </div>
         </section>

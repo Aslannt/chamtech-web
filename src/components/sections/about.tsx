@@ -1,3 +1,4 @@
+import { CountUp } from "@/components/motion/count-up";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 const highlights = [
@@ -10,8 +11,8 @@ const highlights = [
         label: "Years focused on integration",
     },
     {
-        value: "9th",
-        label: "Semester of Systems Engineering",
+        value: "4",
+        label: "Engineering teams, from academia to banking",
     },
 ];
 
@@ -20,64 +21,61 @@ export function About() {
         <section
             id="about"
             aria-labelledby="about-title"
-            className="scroll-mt-28 border-t border-border py-24 sm:py-28"
+            className="scroll-mt-24 py-24 sm:py-32"
         >
             <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
-                <div className="grid gap-14 lg:grid-cols-[1.45fr_0.75fr] lg:items-start">
-                    <div>
-                        <div id="about-title">
-                            <SectionHeading
-                                eyebrow="01 / About"
-                                title="Built around integration. Grounded in backend."
-                            />
-                        </div>
+                <div id="about-title">
+                    <SectionHeading
+                        eyebrow="01 / About"
+                        title="Built around integration."
+                        accent="Grounded in backend."
+                    />
+                </div>
 
-                        <div className="mt-8 max-w-3xl space-y-5 text-base leading-8 text-muted sm:text-lg">
-                            <p>
-                                I&apos;m a software developer with more than three years of
-                                experience building and maintaining applications, APIs and data
-                                integration processes.
-                            </p>
+                <div className="mt-14 grid gap-14 lg:grid-cols-[1.35fr_0.65fr]">
+                    <div data-reveal className="max-w-3xl space-y-6 text-base leading-8 text-muted sm:text-[17px]">
+                        <p className="text-xl leading-9 text-foreground sm:text-[22px] sm:leading-10">
+                            I&apos;m a software developer with more than three years of
+                            experience building and maintaining applications, APIs and data
+                            integration processes.
+                        </p>
 
-                            <p>
-                                My professional work has focused on MuleSoft, REST APIs, ETL,
-                                Oracle, SQL, DataWeave, RAML, JSON and XML. I&apos;m also
-                                strengthening my Java and Spring Boot profile through
-                                production-style backend projects.
-                            </p>
+                        <p>
+                            My professional work has focused on MuleSoft, REST APIs, ETL,
+                            Oracle, SQL, DataWeave, RAML, JSON and XML. Today I build Java
+                            backend services on APX for BBVA at Novatec, and I keep
+                            sharpening Spring Boot through production-style projects.
+                        </p>
 
-                            <p>
-                                I&apos;m currently in the ninth semester of Systems Engineering,
-                                combining academic foundations with hands-on experience solving
-                                integration and backend challenges.
-                            </p>
-                        </div>
+                        <p>
+                            I&apos;m currently in the ninth semester of Systems Engineering,
+                            combining academic foundations with hands-on experience solving
+                            integration and backend challenges.
+                        </p>
                     </div>
 
-                    <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-                        {highlights.map((highlight) => (
-                            <article
+                    <dl className="border-t border-foreground">
+                        {highlights.map((highlight, index) => (
+                            <div
                                 key={highlight.label}
-                                className="surface-card rounded-2xl p-6"
+                                data-reveal
+                                style={{ "--delay": `${index * 120}ms` } as React.CSSProperties}
+                                className="flex items-baseline justify-between gap-6 border-b border-border py-6"
                             >
-                                <p className="font-mono text-3xl font-semibold text-primary-bright">
-                                    {highlight.value}
-                                </p>
-                                <p className="mt-3 text-sm leading-6 text-muted">
-                                    {highlight.label}
-                                </p>
-                            </article>
+                                <dt className="max-w-[12rem] text-sm leading-6 text-muted">{highlight.label}</dt>
+                                <dd className="text-5xl font-light tracking-[-0.05em]">
+                                    <CountUp value={highlight.value} />
+                                </dd>
+                            </div>
                         ))}
-                    </div>
+                    </dl>
                 </div>
 
-                <div className="mt-14 rounded-2xl border border-primary/25 bg-primary/5 px-6 py-5 sm:px-8">
-                    <p className="text-sm leading-7 text-muted">
-                        <span className="font-semibold text-foreground">ChamTech</span> is
-                        my personal software laboratory and project ecosystem. It is not a
-                        company or commercial organization.
-                    </p>
-                </div>
+                <p data-reveal className="mt-16 max-w-3xl border-l-2 border-primary pl-5 text-sm leading-7 text-muted">
+                    <span className="font-semibold text-foreground">ChamTech</span> is
+                    my personal software laboratory and project ecosystem. It is not a
+                    company or commercial organization.
+                </p>
             </div>
         </section>
     );

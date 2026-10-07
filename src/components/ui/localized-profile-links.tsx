@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { localeFromPath } from "@/lib/i18n";
+import { localeFromPath, translate } from "@/lib/i18n";
 
 const cvFiles = {
   en: "/cv/deivid-vanegas-cv-en.pdf",
@@ -13,32 +13,16 @@ function useLocale() {
 }
 
 export function LocalizedExperiencePeriod({ period }: { period: string }) {
-  const locale = useLocale();
-
-  if (locale === "es") {
-    if (period === "July 2024 – Present") return "Julio de 2024 – Actualidad";
-    if (period === "October 2022 – December 2023") {
-      return "Octubre de 2022 – Diciembre de 2023";
-    }
-  }
-
-  return period;
+  return translate(useLocale(), period);
 }
 
 export function HeroCvDownloadLink() {
   const locale = useLocale();
 
   return (
-    <a
-      href={cvFiles[locale]}
-      download
-      hrefLang={locale}
-      className="w-full rounded-full border border-border bg-surface px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary-bright sm:w-auto"
-    >
-      {locale === "es" ? "Descargar CV" : "Download CV"}{" "}
-      <span className="font-mono text-[10px] text-muted">
-        {locale.toUpperCase()}
-      </span>
+    <a href={cvFiles[locale]} download hrefLang={locale} className="btn-ghost">
+      {locale === "es" ? "Descargar CV" : "Download CV"}
+      <span className="font-mono text-[10px] text-muted">{locale.toUpperCase()} ↓</span>
     </a>
   );
 }
@@ -51,17 +35,17 @@ export function ContactCvDownloadLink() {
       href={cvFiles[locale]}
       download
       hrefLang={locale}
-      className="flex items-center justify-between rounded-2xl border border-border bg-background p-5 transition-colors hover:border-primary"
+      className="group flex items-center justify-between border-b border-border py-5 transition-colors hover:border-primary-bright"
     >
       <span>
-        <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+        <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
           {locale === "es" ? "Hoja de vida" : "Curriculum vitae"}
         </span>
-        <span className="mt-2 block text-sm font-semibold">
+        <span className="mt-2 block text-lg font-light tracking-tight">
           {locale === "es" ? "Descargar hoja de vida · Español" : "Download CV · English"}
         </span>
       </span>
-      <span aria-hidden="true" className="text-primary-bright">
+      <span aria-hidden="true" className="text-primary-bright transition-transform group-hover:translate-y-0.5">
         ↓
       </span>
     </a>

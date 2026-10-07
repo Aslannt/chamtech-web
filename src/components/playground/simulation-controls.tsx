@@ -105,7 +105,7 @@ export function SimulationControls({
           type="button"
           disabled={running}
           onClick={onRun}
-          className="rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-bright disabled:cursor-wait disabled:opacity-60"
+          className="btn-primary disabled:cursor-wait disabled:opacity-60"
         >
           {running ? "Synchronizing…" : "Run synchronization"}
         </button>

@@ -9,7 +9,7 @@ import { localeFromPath, localePath, translate } from "@/lib/i18n";
 export function SiteFooter() {
   const locale = localeFromPath(usePathname());
   return (
-    <footer className="border-t border-border py-8">
+    <footer className="theme-dark border-t border-border py-8">
       <div className="mx-auto flex max-w-[1180px] flex-col gap-4 px-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p>
           © 2026 Deivid Vanegas. {translate(locale, "ChamTech is a personal software lab.")}
@@ -18,7 +18,7 @@ export function SiteFooter() {
           <TranslationBoundary locale={locale}><EasterEggLauncher /></TranslationBoundary>
           <Link
             href={localePath(locale, "/#home")}
-            className="font-mono text-xs transition-colors hover:text-primary-bright"
+            className="link-sweep font-mono text-xs transition-colors hover:text-foreground"
           >
             {translate(locale, "Back to top ↑")}
           </Link>

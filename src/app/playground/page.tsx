@@ -25,7 +25,7 @@ export default function PlaygroundPage() {
           <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-bright">
             Interactive architecture simulation
           </span>
-          <h1 className="mt-7 max-w-4xl text-5xl font-semibold tracking-[-0.045em] sm:text-6xl">
+          <h1 className="mt-7 max-w-4xl text-5xl font-light tracking-[-0.055em] sm:text-7xl">
             ChamTech Sync Playground
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">

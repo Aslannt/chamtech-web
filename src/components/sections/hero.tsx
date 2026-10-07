@@ -1,108 +1,95 @@
+import { IntegrationPulse } from "@/components/motion/integration-pulse";
 import { HeroCvDownloadLink } from "@/components/ui/localized-profile-links";
-
-const architectureNodes = [
-  "API Consumer",
-  "MuleSoft",
-  "Spring Boot",
-  "PostgreSQL",
-];
 
 export function Hero() {
   return (
     <section
       id="home"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden"
+      className="theme-dark relative isolate overflow-hidden"
     >
       <div aria-hidden="true" className="technical-grid" />
-      <div aria-hidden="true" className="hero-glow" />
-      <div aria-hidden="true" className="hero-orbit" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 right-[-10%] h-[38rem] w-[38rem] rounded-full opacity-[0.16] blur-[120px]"
+        style={{ background: "var(--signal)" }}
+      />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-72px)] max-w-[1180px] flex-col items-center justify-center px-6 py-20 text-center sm:px-8">
-        <div className="hero-enter">
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/90 px-4 py-2 font-mono text-xs text-primary-bright">
-            <span
-              aria-hidden="true"
-              className="size-2 rounded-full bg-verified"
-            />
-            Open to backend and integration opportunities
+      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-64px)] max-w-[1180px] items-center gap-14 px-6 py-20 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div>
+          <p
+            className="hero-enter inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/80 px-3.5 py-1.5 font-mono text-[11px] text-muted"
+          >
+            <span aria-hidden="true" className="pulse-dot size-1.5 rounded-full bg-verified text-verified" />
+            Now · APX Developer at Novatec for BBVA
+          </p>
+
+          <p
+            className="hero-enter mt-10 font-mono text-[11px] uppercase tracking-[0.24em] text-primary-bright"
+            style={{ "--delay": "80ms" } as React.CSSProperties}
+          >
+            Backend &amp; Integration Developer
           </p>
 
           <h1
             id="hero-title"
-            className="mx-auto mt-8 max-w-5xl text-5xl font-semibold tracking-[-0.05em] sm:text-6xl lg:text-7xl"
+            className="hero-enter mt-4 text-[3.6rem] font-light leading-[0.95] tracking-[-0.06em] sm:text-[5.2rem] lg:text-[6.2rem]"
+            style={{ "--delay": "140ms" } as React.CSSProperties}
           >
-            Hello, I&apos;m{" "}
-            <span className="text-primary-bright">Deivid Vanegas</span>
+            Deivid Vanegas
           </h1>
 
-          <p className="mt-6 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-            Backend &amp; Integration Developer
+          <div
+            aria-hidden="true"
+            className="hero-enter signal-bar mt-7 w-24"
+            style={{ "--delay": "220ms" } as React.CSSProperties}
+          />
+
+          <p
+            className="hero-enter mt-7 max-w-xl font-serif text-[1.9rem] italic leading-[1.15] tracking-[-0.01em] sm:text-[2.3rem]"
+            style={{ "--delay": "280ms" } as React.CSSProperties}
+          >
+            I connect systems that were never designed to talk to each other.
           </p>
 
-          <p className="mt-5 font-mono text-xs leading-6 tracking-[0.08em] text-muted sm:text-sm">
-            Java · Spring Boot · MuleSoft · DataWeave · REST APIs
-          </p>
-
-          <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-muted sm:text-lg">
+          <p
+            className="hero-enter mt-6 max-w-xl text-base leading-8 text-muted"
+            style={{ "--delay": "340ms" } as React.CSSProperties}
+          >
             I build backend services and enterprise integrations focused on
             maintainability, traceability, data transformation and reliable API
             communication.
           </p>
 
-          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="#projects"
-              className="w-full rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-bright sm:w-auto"
-            >
-              View my work
+          <div
+            className="hero-enter mt-9 flex flex-col gap-3 sm:flex-row"
+            style={{ "--delay": "420ms" } as React.CSSProperties}
+          >
+            <a href="#projects" className="btn-primary">
+              View my work <span aria-hidden="true" className="btn-arrow">→</span>
             </a>
 
             <HeroCvDownloadLink />
           </div>
 
-          <div className="mt-7 flex items-center justify-center gap-6 font-mono text-xs text-muted">
-            <a
-              href="https://github.com/Aslannt"
-              target="_blank"
-              rel="noreferrer"
-              className="transition-colors hover:text-primary-bright"
-            >
+          <div
+            className="hero-enter mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-6 font-mono text-[11px] text-muted"
+            style={{ "--delay": "500ms" } as React.CSSProperties}
+          >
+            <span data-no-translate>Java · APX · Spring Boot · MuleSoft · DataWeave</span>
+            <span aria-hidden="true" className="hidden h-3 w-px bg-border sm:block" />
+            <a href="https://github.com/Aslannt" target="_blank" rel="noreferrer" className="link-sweep transition-colors hover:text-foreground">
               GitHub ↗
             </a>
-
-            <span aria-hidden="true" className="text-border">
-              /
-            </span>
-
-            <a
-              href="https://www.linkedin.com/in/deivid-vanegas/"
-              target="_blank"
-              rel="noreferrer"
-              className="transition-colors hover:text-primary-bright"
-            >
+            <a href="https://www.linkedin.com/in/deivid-vanegas/" target="_blank" rel="noreferrer" className="link-sweep transition-colors hover:text-foreground">
               LinkedIn ↗
             </a>
           </div>
         </div>
 
-        <ol
-          aria-label="ChamTech architecture preview"
-          className="architecture-flow mt-16 grid w-full max-w-4xl grid-cols-2 gap-3 md:grid-cols-4"
-        >
-          {architectureNodes.map((node, index) => (
-            <li
-              key={node}
-              className="relative z-10 flex items-center gap-3 rounded-xl border border-border bg-surface/95 px-4 py-3 text-left"
-            >
-              <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/15 font-mono text-[10px] text-primary-bright">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-
-              <span className="text-xs font-medium sm:text-sm">{node}</span>
-            </li>
-          ))}
-        </ol>
+        <div className="hero-enter" style={{ "--delay": "300ms" } as React.CSSProperties}>
+          <IntegrationPulse />
+        </div>
       </div>
     </section>
   );

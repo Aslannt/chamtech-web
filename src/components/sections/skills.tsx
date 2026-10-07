@@ -6,46 +6,51 @@ export function Skills() {
         <section
             id="skills"
             aria-labelledby="skills-title"
-            className="scroll-mt-28 border-t border-border py-24 sm:py-28"
+            className="scroll-mt-24 border-t border-border bg-surface py-24 sm:py-32"
         >
             <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
                 <div id="skills-title">
                     <SectionHeading
                         eyebrow="02 / Skills & Technologies"
-                        title="Tools selected for reliable systems."
+                        title="Tools selected for"
+                        accent="reliable systems."
                         description="A practical stack for backend development, enterprise integration, data processing and technical verification."
                     />
                 </div>
 
-                <div className="mt-12 grid gap-5 md:grid-cols-2">
+                <div className="mt-14 grid border-l border-t border-border md:grid-cols-2">
                     {skillGroups.map((group, index) => (
                         <article
                             key={group.title}
-                            className="surface-card rounded-2xl p-6 sm:p-7"
+                            data-reveal
+                            style={{ "--delay": `${index * 90}ms` } as React.CSSProperties}
+                            className="group relative border-b border-r border-border p-7 transition-colors duration-500 hover:bg-background sm:p-9"
                         >
+                            <span
+                                aria-hidden="true"
+                                className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"
+                            />
                             <div className="flex items-start justify-between gap-6">
-                                <div>
-                                    <h3 className="text-xl font-semibold">{group.title}</h3>
-                                    <p className="mt-3 max-w-md text-sm leading-6 text-muted">
-                                        {group.description}
-                                    </p>
-                                </div>
-
-                                <span className="font-mono text-xs text-primary-bright">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                                <h3 className="text-2xl font-light tracking-[-0.03em]">{group.title}</h3>
+                                <span className="font-mono text-[11px] text-primary-bright">
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
                             </div>
+                            <p className="mt-3 max-w-md text-sm leading-6 text-muted">
+                                {group.description}
+                            </p>
 
-                            <div className="mt-6 flex flex-wrap gap-2">
+                            <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2.5">
                                 {group.items.map((item) => (
-                                    <span
+                                    <li
                                         key={item}
-                                        className="rounded-full border border-border bg-background px-3 py-2 font-mono text-xs text-muted transition-colors hover:border-primary/70 hover:text-foreground"
+                                        className="flex items-center gap-2 font-mono text-[12px] text-foreground/80"
                                     >
-                    {item}
-                  </span>
+                                        <span aria-hidden="true" className="size-1 rounded-full bg-primary/70" />
+                                        {item}
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         </article>
                     ))}
                 </div>

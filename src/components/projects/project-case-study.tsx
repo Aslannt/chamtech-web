@@ -8,13 +8,13 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         <div aria-hidden="true" className="technical-grid" />
         <div className="relative z-10 mx-auto max-w-[1180px] px-6 sm:px-8">
           <Link href="/#projects" className="font-mono text-xs text-muted transition-colors hover:text-primary-bright">
-            ← Back to projects
+            <span aria-hidden="true">← </span>Back to projects
           </Link>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.7fr] lg:items-end">
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary-bright">{project.category}</p>
-              <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-[-0.045em] sm:text-6xl">{project.name}</h1>
+              <h1 className="mt-5 max-w-4xl text-5xl font-light tracking-[-0.055em] sm:text-7xl">{project.name}</h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">{project.description}</p>
             </div>
 
@@ -28,7 +28,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
                   href={project.repository}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-bright"
+                  className="btn-primary"
                 >
                   View repository ↗
                 </a>
@@ -42,7 +42,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         <section aria-labelledby="overview-title" className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary-bright">Project overview</p>
-            <h2 id="overview-title" className="mt-4 text-3xl font-semibold">Context and approach</h2>
+            <h2 id="overview-title" className="mt-4 text-3xl font-light tracking-[-0.03em]">Context and approach</h2>
           </div>
           <div className="space-y-8 text-base leading-8 text-muted">
             <div><h3 className="font-semibold text-foreground">Overview</h3><p className="mt-2">{project.overview}</p></div>
@@ -52,11 +52,11 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         </section>
 
         <section aria-labelledby="metrics-title" className="mt-20 border-t border-border pt-20">
-          <h2 id="metrics-title" className="text-3xl font-semibold">Verified metrics</h2>
+          <h2 id="metrics-title" className="text-3xl font-light tracking-[-0.03em]">Verified metrics</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {project.metrics.map((metric) => (
               <article key={metric.label} className="surface-card rounded-2xl p-6">
-                <p className="font-mono text-3xl font-semibold text-primary-bright">{metric.value}</p>
+                <p className="text-4xl font-light tracking-[-0.05em] text-foreground">{metric.value}</p>
                 <p className="mt-3 text-sm leading-6 text-muted">{metric.label}</p>
               </article>
             ))}
@@ -64,7 +64,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         </section>
 
         <section aria-labelledby="project-architecture-title" className="mt-20 border-t border-border pt-20">
-          <h2 id="project-architecture-title" className="text-3xl font-semibold">Architecture</h2>
+          <h2 id="project-architecture-title" className="text-3xl font-light tracking-[-0.03em]">Architecture</h2>
           <ol className="mt-8 grid gap-3 md:grid-cols-2 lg:grid-cols-5">
             {project.architecture.map((node, index) => (
               <li key={node.title} className="surface-card rounded-2xl p-5">
@@ -78,7 +78,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
 
         <section className="mt-20 grid gap-6 border-t border-border pt-20 lg:grid-cols-2">
           <div className="surface-card rounded-2xl p-6 sm:p-8">
-            <h2 className="text-2xl font-semibold">Main capabilities</h2>
+            <h2 className="text-2xl font-light tracking-[-0.03em]">Main capabilities</h2>
             <ul className="mt-6 space-y-3">
               {project.capabilities.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-7 text-muted">
@@ -88,7 +88,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             </ul>
           </div>
           <div className="surface-card rounded-2xl p-6 sm:p-8">
-            <h2 className="text-2xl font-semibold">Verification evidence</h2>
+            <h2 className="text-2xl font-light tracking-[-0.03em]">Verification evidence</h2>
             <ul className="mt-6 space-y-3">
               {project.verification.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-7 text-muted">
@@ -101,13 +101,13 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
 
         <section className="mt-6 grid gap-6 lg:grid-cols-2">
           <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
-            <h2 className="text-2xl font-semibold">Engineering decisions</h2>
+            <h2 className="text-2xl font-light tracking-[-0.03em]">Engineering decisions</h2>
             <ul className="mt-6 space-y-3">
               {project.decisions.map((item) => <li key={item} className="text-sm leading-7 text-muted">— {item}</li>)}
             </ul>
           </div>
           <div className="rounded-2xl border border-border bg-background p-6 sm:p-8">
-            <h2 className="text-2xl font-semibold">Scope limitations</h2>
+            <h2 className="text-2xl font-light tracking-[-0.03em]">Scope limitations</h2>
             <ul className="mt-6 space-y-3">
               {project.limitations.map((item) => <li key={item} className="text-sm leading-7 text-muted">— {item}</li>)}
             </ul>
@@ -116,10 +116,10 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
 
         <section className="mt-20 flex flex-col items-start justify-between gap-6 rounded-3xl border border-primary/25 bg-primary/5 p-8 sm:flex-row sm:items-center">
           <div>
-            <h2 className="text-2xl font-semibold">Review the implementation</h2>
+            <h2 className="text-2xl font-light tracking-[-0.03em]">Review the implementation</h2>
             <p className="mt-2 text-sm leading-6 text-muted">Source code, documentation and reproducible local instructions are available on GitHub.</p>
           </div>
-          <a href={project.repository} target="_blank" rel="noreferrer" className="shrink-0 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-bright">
+          <a href={project.repository} target="_blank" rel="noreferrer" className="shrink-0 btn-primary">
             Open GitHub ↗
           </a>
         </section>

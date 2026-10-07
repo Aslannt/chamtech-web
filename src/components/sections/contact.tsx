@@ -16,58 +16,57 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="scroll-mt-28 border-t border-border py-24 sm:py-28"
+      className="theme-dark relative isolate scroll-mt-24 overflow-hidden py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
-        <div className="surface-card overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div>
-              <div id="contact-title">
-                <SectionHeading
-                  eyebrow="08 / Contact"
-                  title="Let’s build something reliable."
-                  description="I’m open to conversations about backend development, enterprise integration and Java or MuleSoft opportunities."
-                />
-              </div>
+      <div aria-hidden="true" className="technical-grid" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-56 left-[-10%] h-[34rem] w-[34rem] rounded-full opacity-[0.14] blur-[120px]"
+        style={{ background: "var(--signal)" }}
+      />
 
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="mt-8 inline-flex rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-bright"
-              >
-                Send me an email
-              </a>
-            </div>
+      <div className="relative mx-auto max-w-[1180px] px-6 sm:px-8">
+        <div id="contact-title">
+          <SectionHeading
+            eyebrow="08 / Contact"
+            title="Let’s build something"
+            accent="reliable."
+            description="Want to talk about backend, integration or a project? My inbox is open."
+          />
+        </div>
 
-            <div className="grid gap-3">
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <div data-reveal>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="group inline-flex flex-wrap items-baseline gap-x-4 text-[1.7rem] font-light tracking-[-0.04em] sm:text-[2.6rem]"
+            >
+              <span className="link-sweep pb-1">{siteConfig.email}</span>
+              <span aria-hidden="true" className="btn-arrow text-primary-bright group-hover:translate-x-1">→</span>
+            </a>
+            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+              Bogotá, Colombia · UTC−5
+            </p>
+          </div>
+
+          <div data-reveal style={{ "--delay": "120ms" } as React.CSSProperties} className="border-t border-border">
+            {links.map((link) => (
               <a
-                href={`mailto:${siteConfig.email}`}
-                className="flex items-center justify-between rounded-2xl border border-border bg-background p-5 transition-colors hover:border-primary"
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between border-b border-border py-5 transition-colors hover:border-primary-bright"
               >
                 <span>
-                  <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-muted">Email</span>
-                  <span className="mt-2 block text-sm font-semibold">{siteConfig.email}</span>
+                  <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-muted">{link.label}</span>
+                  <span className="mt-2 block text-lg font-light tracking-tight">{link.value}</span>
                 </span>
-                <span aria-hidden="true" className="text-primary-bright">↗</span>
+                <span aria-hidden="true" className="text-primary-bright transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
               </a>
+            ))}
 
-              {links.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-between rounded-2xl border border-border bg-background p-5 transition-colors hover:border-primary"
-                >
-                  <span>
-                    <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-muted">{link.label}</span>
-                    <span className="mt-2 block text-sm font-semibold">{link.value}</span>
-                  </span>
-                  <span aria-hidden="true" className="text-primary-bright">↗</span>
-                </a>
-              ))}
-
-              <ContactCvDownloadLink />
-            </div>
+            <ContactCvDownloadLink />
           </div>
         </div>
       </div>

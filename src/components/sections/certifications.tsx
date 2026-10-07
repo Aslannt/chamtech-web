@@ -9,7 +9,8 @@ import { siteConfig } from "@/lib/site";
 const sectionCopy = {
   en: {
     eyebrow: "07 / Selected credentials",
-    title: "Credentials that reinforce the stack.",
+    title: "Credentials that",
+    accent: "reinforce the stack.",
     description:
       "A focused selection of certifications and structured programs aligned with cloud, artificial intelligence, containers and software engineering.",
     credential: "View credential",
@@ -20,7 +21,8 @@ const sectionCopy = {
   },
   es: {
     eyebrow: "07 / Credenciales seleccionadas",
-    title: "Credenciales que respaldan el stack.",
+    title: "Credenciales que",
+    accent: "respaldan el stack.",
     description:
       "Una selección enfocada de certificaciones y programas estructurados relacionados con cloud, inteligencia artificial, contenedores e ingeniería de software.",
     credential: "Ver credencial",
@@ -39,84 +41,74 @@ export function Certifications() {
     <section
       id="certifications"
       aria-labelledby="certifications-title"
-      className="scroll-mt-28 border-t border-border py-24 sm:py-28"
+      className="scroll-mt-24 border-t border-border py-24 sm:py-32"
     >
       <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
         <div id="certifications-title">
           <SectionHeading
             eyebrow={copy.eyebrow}
             title={copy.title}
+            accent={copy.accent}
             description={copy.description}
           />
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {certifications.map((certification) => {
+        <ul className="mt-14 border-t border-foreground">
+          {certifications.map((certification, index) => {
             const content = certification.content[locale];
 
             return (
-              <article
+              <li
                 key={certification.id}
-                className="surface-card group flex h-full flex-col rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-7"
+                data-reveal
+                style={{ "--delay": `${index * 80}ms` } as React.CSSProperties}
+                className="group grid gap-4 border-b border-border py-7 transition-colors duration-500 hover:bg-surface sm:grid-cols-[5.5rem_1fr_auto] sm:items-start sm:gap-8 sm:px-4"
               >
-                <div className="flex items-start justify-between gap-5">
-                  <span className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-xl border border-primary/35 bg-primary/10 px-3 font-mono text-xs font-semibold tracking-[0.12em] text-primary-bright">
-                    {certification.badge}
-                  </span>
-                  <span className="rounded-full border border-border bg-background px-3 py-1.5 text-right font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
-                    {content.type}
-                  </span>
-                </div>
+                <span className="inline-flex h-11 w-fit min-w-14 items-center justify-center rounded-md border border-border bg-surface px-3 font-mono text-[11px] font-semibold tracking-[0.12em] text-primary-bright transition-colors group-hover:border-primary">
+                  {certification.badge}
+                </span>
 
-                <div className="mt-6 flex-1">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-bright">
-                    {certification.issuer}
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+                    {certification.issuer} · {content.type}
                   </p>
-                  <h3 className="mt-3 text-xl font-semibold leading-8 tracking-tight">
+                  <h3 className="mt-2 text-xl font-light leading-8 tracking-[-0.025em] sm:text-2xl">
                     {content.title}
                   </h3>
-                  <p className="mt-3 text-sm font-medium text-foreground/85">
-                    {content.issued}
-                  </p>
-                  <p className="mt-4 text-sm leading-7 text-muted">
+                  <p className="mt-2 max-w-2xl text-sm leading-7 text-muted">
                     {content.summary}
                   </p>
                   {certification.credentialCode ? (
-                    <p className="mt-4 break-all font-mono text-[10px] leading-5 text-muted">
+                    <p className="mt-2 break-all font-mono text-[10px] leading-5 text-muted">
                       {copy.credentialCode}: {certification.credentialCode}
                     </p>
                   ) : null}
                 </div>
 
-                <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
-                  <span className="rounded-full border border-border bg-background px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
+                <div className="flex flex-col gap-2 sm:items-end sm:text-right">
+                  <span className="text-sm text-foreground/85">{content.issued}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary-bright">
                     {content.focus}
                   </span>
-
                   {certification.credentialUrl ? (
                     <a
                       href={certification.credentialUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm font-semibold text-primary-bright transition-colors hover:text-foreground"
+                      className="link-sweep text-sm font-semibold text-primary-bright"
                     >
                       {copy.credential} ↗
                     </a>
                   ) : null}
                 </div>
-              </article>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
-        <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-border bg-surface p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div data-reveal className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-7 text-muted">{copy.note}</p>
-          <a
-            href={siteConfig.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex shrink-0 items-center justify-center rounded-full border border-primary/60 px-5 py-3 text-sm font-semibold text-primary-bright transition-colors hover:border-primary-bright hover:bg-primary/10"
-          >
+          <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="btn-ghost shrink-0">
             {copy.linkedin} ↗
           </a>
         </div>

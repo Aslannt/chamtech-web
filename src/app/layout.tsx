@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/lib/site";
@@ -17,6 +18,14 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -27,6 +36,7 @@ export const metadata: Metadata = {
   keywords: [
     "Deivid Vanegas",
     "Java Developer",
+    "APX",
     "Spring Boot",
     "MuleSoft",
     "DataWeave",
@@ -62,7 +72,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
+        <ScrollReveal />
         <SiteHeader />
         {children}
         <SiteFooter />

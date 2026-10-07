@@ -23,58 +23,78 @@ const nodes = [
   },
 ];
 
+function Connector({ index }: { index: number }) {
+  return (
+    <div aria-hidden="true" className="relative flex items-center justify-center py-2 lg:px-1 lg:py-0">
+      <svg className="h-10 w-px overflow-visible lg:h-px lg:w-10" preserveAspectRatio="none">
+        <line className="flow-dash lg:hidden" x1="0" y1="0" x2="0" y2="40" stroke="var(--primary-bright)" strokeOpacity="0.6" />
+        <line className="flow-dash hidden lg:inline" x1="0" y1="0" x2="40" y2="0" stroke="var(--primary-bright)" strokeOpacity="0.6" />
+      </svg>
+      <span
+        className="architecture-packet absolute size-1.5 rounded-full"
+        style={{ background: "var(--signal)", animationDelay: `${index * 0.45}s` }}
+      />
+    </div>
+  );
+}
+
 export function Architecture() {
   return (
     <section
       id="architecture"
       aria-labelledby="architecture-title"
-      className="scroll-mt-28 border-t border-border py-24 sm:py-28"
+      className="theme-dark relative isolate scroll-mt-24 overflow-hidden py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-[1180px] px-6 sm:px-8">
+      <div aria-hidden="true" className="technical-grid" />
+      <div className="relative mx-auto max-w-[1180px] px-6 sm:px-8">
         <div id="architecture-title">
           <SectionHeading
             eyebrow="04 / ChamTech Architecture"
-            title="How the projects connect."
+            title="How the projects"
+            accent="connect."
             description="A backend and integration case study where MuleSoft shields the consumer from authentication, pagination and internal backend response details."
           />
         </div>
 
-        <ol className="mt-14 grid items-stretch gap-4 lg:grid-cols-[1fr_auto_1.2fr_auto_1.2fr_auto_1fr]">
+        <ol className="mt-16 grid items-stretch lg:grid-cols-[1fr_auto_1.15fr_auto_1.15fr_auto_1fr]">
           {nodes.map((node, index) => (
             <li key={node.title} className="contents">
-              <article className="surface-card relative rounded-2xl p-5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-bright">
-                  {node.subtitle}
-                </span>
-                <h3 className="mt-3 text-lg font-semibold">{node.title}</h3>
-                <ul className="mt-5 space-y-3">
+              <article
+                data-reveal
+                style={{ "--delay": `${index * 140}ms` } as React.CSSProperties}
+                className={`blueprint-box rounded-[6px] p-5 ${index === 1 ? "!border-primary/60" : ""}`}
+              >
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em]">
+                  <span className="text-primary-bright">{node.subtitle}</span>
+                  <span className="text-muted">{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <h3 className="mt-4 text-lg font-light leading-6 tracking-[-0.02em]">{node.title}</h3>
+                <ul className="mt-5 space-y-2.5 border-t border-border pt-4">
                   {node.items.map((item) => (
-                    <li key={item} className="flex gap-2 text-xs leading-5 text-muted">
-                      <span aria-hidden="true" className="mt-2 size-1 shrink-0 rounded-full bg-primary" />
+                    <li key={item} className="flex gap-2.5 font-mono text-[11px] leading-5 text-muted">
+                      <span aria-hidden="true" className="text-primary-bright">›</span>
                       {item}
                     </li>
                   ))}
                 </ul>
               </article>
 
-              {index < nodes.length - 1 ? (
-                <div aria-hidden="true" className="flex items-center justify-center py-1 text-primary-bright">
-                  <span className="lg:hidden">↓</span>
-                  <span className="hidden font-mono lg:inline">→</span>
-                </div>
-              ) : null}
+              {index < nodes.length - 1 ? <Connector index={index} /> : null}
             </li>
           ))}
         </ol>
 
-        <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-primary/25 bg-primary/5 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div
+          data-reveal
+          className="mt-8 flex flex-col gap-4 rounded-[6px] border border-dashed border-border p-6 sm:flex-row sm:items-center sm:justify-between"
+        >
           <div>
-            <p className="font-semibold">Canonical downstream output</p>
-            <p className="mt-2 text-sm leading-6 text-muted">
+            <p className="font-medium">Canonical downstream output</p>
+            <p className="mt-1.5 text-sm leading-6 text-muted">
               MuleSoft generates a canonical JSON file that simulates delivery to an ERP.
             </p>
           </div>
-          <span className="w-fit rounded-full border border-border bg-background px-4 py-2 font-mono text-xs text-muted">
+          <span className="w-fit rounded-full border border-border px-4 py-2 font-mono text-[11px] text-muted">
             Local simulator · Not a real ERP
           </span>
         </div>

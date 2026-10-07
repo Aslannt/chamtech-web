@@ -1,16 +1,41 @@
 @import "tailwindcss";
 
+/*
+ * ChamTech "Blueprint Ledger" design language.
+ * Paper-light editorial sections alternate with ink-dark blueprint bands.
+ * One violet accent for interaction, one signal gradient reserved for data in motion.
+ */
 :root {
-  --background: #070709;
-  --surface: #111116;
-  --surface-raised: #17171f;
-  --primary: #8b5cf6;
-  --primary-bright: #a78bfa;
-  --text-primary: #f4f4f5;
-  --text-muted: #a1a1aa;
-  --border: #2a2238;
-  --verified: #34d399;
-  --shadow-card: 0 24px 80px rgba(0, 0, 0, 0.35);
+  --background: #f6f5f1;
+  --surface: #ffffff;
+  --surface-raised: #efede7;
+  --primary: #5b4bff;
+  --primary-bright: #4434e0;
+  --text-primary: #0d0e12;
+  --text-muted: #5b5e68;
+  --border: #e1ded5;
+  --verified: #0b8a5f;
+  --grid-line: rgba(13, 14, 18, 0.055);
+  --shadow-card: 0 1px 0 rgba(13, 14, 18, 0.04), 0 12px 32px -18px rgba(13, 14, 18, 0.18);
+  --signal: linear-gradient(90deg, #ff7a45 0%, #e8467c 48%, #7c8cff 100%);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.theme-dark {
+  --background: #0a0b0f;
+  --surface: #111319;
+  --surface-raised: #171a22;
+  --primary: #6d5eff;
+  --primary-bright: #a9a1ff;
+  --text-primary: #f3f2ee;
+  --text-muted: #989ba6;
+  --border: #23262f;
+  --verified: #3ddc97;
+  --grid-line: rgba(169, 161, 255, 0.07);
+  --shadow-card: 0 24px 60px -30px rgba(0, 0, 0, 0.7);
+  background: var(--background);
+  color: var(--text-primary);
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -25,6 +50,7 @@
   --color-verified: var(--verified);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif);
 }
 
 * {
@@ -39,9 +65,7 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(circle at 50% -15%, rgba(139, 92, 246, 0.16), transparent 34rem),
-    var(--background);
+  background: var(--background);
   color: var(--text-primary);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -59,105 +83,247 @@ a {
 }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.35);
+  background: rgba(91, 75, 255, 0.22);
   color: var(--text-primary);
 }
 
 :focus-visible {
-  outline: 2px solid var(--primary-bright);
+  outline: 2px solid var(--primary);
   outline-offset: 4px;
 }
+
+/* ---------- Surfaces ---------- */
 
 .technical-grid {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.15;
   background-image:
-    linear-gradient(rgba(167, 139, 250, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(167, 139, 250, 0.14) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: linear-gradient(to bottom, black, transparent 75%);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 80%);
 }
 
 .surface-card {
   border: 1px solid var(--border);
-  background: linear-gradient(
-    145deg,
-    rgba(23, 23, 31, 0.96),
-    rgba(17, 17, 22, 0.96)
-  );
+  border-radius: 12px;
+  background: var(--surface);
   box-shadow: var(--shadow-card);
 }
 
-.hero-glow {
-  position: absolute;
-  top: 5rem;
-  left: 50%;
-  width: min(70rem, 90vw);
-  height: 34rem;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: rgba(139, 92, 246, 0.14);
-  filter: blur(120px);
-  pointer-events: none;
+.blueprint-box {
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 
-.hero-orbit {
-  position: absolute;
-  top: 4rem;
-  left: 50%;
-  width: min(46rem, 88vw);
-  aspect-ratio: 1;
-  transform: translateX(-50%);
-  border: 1px solid rgba(167, 139, 250, 0.1);
-  border-radius: 999px;
-  pointer-events: none;
-  animation: orbit-breathe 6s ease-in-out infinite;
-}
-
-.hero-orbit::before,
-.hero-orbit::after {
+/* Corner ticks, like registration marks on an engineering drawing. */
+.blueprint-box::before,
+.blueprint-box::after {
   content: "";
   position: absolute;
-  border: 1px solid rgba(167, 139, 250, 0.08);
-  border-radius: inherit;
+  width: 9px;
+  height: 9px;
+  border-color: var(--primary-bright);
+  border-style: solid;
+  pointer-events: none;
 }
 
-.hero-orbit::before {
-  inset: 14%;
+.blueprint-box::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
 }
 
-.hero-orbit::after {
-  inset: 29%;
+.blueprint-box::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 1px 1px 0;
 }
+
+.signal-bar {
+  height: 2px;
+  background: var(--signal);
+}
+
+.signal-text {
+  background: var(--signal);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Links & buttons ---------- */
+
+.link-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 400ms var(--ease-out);
+}
+
+.link-sweep:hover,
+.link-sweep:focus-visible {
+  background-size: 100% 1px;
+}
+
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 8px;
+  padding: 0.85rem 1.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    transform 250ms var(--ease-out),
+    box-shadow 250ms var(--ease-out),
+    border-color 250ms var(--ease-out),
+    background 250ms var(--ease-out);
+}
+
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--background);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -12px rgba(91, 75, 255, 0.7);
+}
+
+.btn-ghost {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.btn-ghost:hover {
+  border-color: var(--primary-bright);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.btn-arrow {
+  transition: transform 250ms var(--ease-out);
+}
+
+.btn-primary:hover .btn-arrow,
+.btn-ghost:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Motion ---------- */
 
 .hero-enter {
-  animation: hero-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise 900ms var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
 }
 
-.architecture-flow {
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 800ms var(--ease-out),
+    transform 800ms var(--ease-out);
+  transition-delay: var(--delay, 0ms);
+}
+
+.reveal-ready [data-reveal][data-revealed] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Rules that draw themselves once their section is revealed. */
+.reveal-ready [data-reveal] .draw-line {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1200ms var(--ease-out) 150ms;
+}
+
+.reveal-ready [data-revealed] .draw-line {
+  transform: scaleX(1);
+}
+
+.reveal-ready [data-reveal] .draw-line-y {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1600ms var(--ease-out) 200ms;
+}
+
+.reveal-ready [data-revealed] .draw-line-y {
+  transform: scaleY(1);
+}
+
+.flow-dash {
+  stroke-dasharray: 4 6;
+  animation: dash-flow 1.4s linear infinite;
+}
+
+.pulse-dot {
   position: relative;
 }
 
-@media (min-width: 768px) {
-  .architecture-flow::before {
-    content: "";
-    position: absolute;
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  animation: pulse-ring 2.2s var(--ease-out) infinite;
+}
+
+.architecture-packet {
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  animation: packet-y 1.8s var(--ease-out) infinite;
+}
+
+@media (min-width: 1024px) {
+  .architecture-packet {
     top: 50%;
-    right: 10%;
-    left: 10%;
-    height: 1px;
-    background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(139, 92, 246, 0.7),
-            transparent
-    );
+    left: 0;
+    margin: -3px 0 0;
+    animation-name: packet-x;
   }
 }
 
-@keyframes hero-enter {
+@keyframes packet-y {
+  0% { opacity: 0; transform: translateY(0); }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(52px); }
+}
+
+@keyframes packet-x {
+  0% { opacity: 0; transform: translateX(0); }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(44px); }
+}
+
+.log-line {
+  animation: log-in 500ms var(--ease-out) both;
+}
+
+.lift {
+  transition:
+    transform 350ms var(--ease-out),
+    border-color 350ms var(--ease-out),
+    box-shadow 350ms var(--ease-out);
+}
+
+.lift:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+  box-shadow: 0 22px 44px -26px rgba(91, 75, 255, 0.45);
+}
+
+@keyframes rise {
   from {
     opacity: 0;
     transform: translateY(18px);
@@ -169,14 +335,33 @@ a {
   }
 }
 
-@keyframes orbit-breathe {
-  0%,
-  100% {
-    opacity: 0.45;
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.6);
   }
 
-  50% {
-    opacity: 0.85;
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+
+@keyframes log-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -192,5 +377,12 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .reveal-ready [data-reveal],
+  .reveal-ready [data-reveal] .draw-line,
+  .reveal-ready [data-reveal] .draw-line-y {
+    opacity: 1;
+    transform: none;
   }
 }

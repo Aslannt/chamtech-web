@@ -65,6 +65,29 @@ export const certifications: Certification[] = [
     },
   },
   {
+    id: "scrum-fundamentals-2023",
+    badge: "SFC",
+    issuer: "SCRUMstudy",
+    content: {
+      en: {
+        title: "Scrum Fundamentals Certified (SFC)",
+        type: "Professional certification",
+        issued: "Issued November 15, 2023",
+        summary:
+          "Scrum roles, events and artifacts for iterative delivery, applied day to day in agile integration and backend teams.",
+        focus: "Agile delivery",
+      },
+      es: {
+        title: "Scrum Fundamentals Certified (SFC)",
+        type: "Certificación profesional",
+        issued: "Emitida el 15 de noviembre de 2023",
+        summary:
+          "Roles, eventos y artefactos de Scrum para entrega iterativa, aplicados en el día a día de equipos ágiles de integración y backend.",
+        focus: "Entrega ágil",
+      },
+    },
+  },
+  {
     id: "docker-professional-2024",
     badge: "DKR",
     issuer: "Código Facilito",
