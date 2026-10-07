@@ -39,6 +39,16 @@ export async function generateMetadata({ params }: SpanishPageProps): Promise<Me
         canonical: `/es/projects/${project.slug}`,
         languages: { en: `/projects/${project.slug}`, es: `/es/projects/${project.slug}` },
       },
+      openGraph: {
+        title: `${project.name} | Deivid Vanegas`,
+        description: translate("es", project.description),
+        url: `/es/projects/${project.slug}`,
+        locale: "es_CO",
+        ...("ogImage" in project ? { images: [{ url: project.ogImage, width: 1200, height: 630 }] } : { images: ["/opengraph-image"] }),
+      },
+      ...("ogImage" in project
+        ? { twitter: { card: "summary_large_image", images: [project.ogImage] } }
+        : {}),
     };
   }
   return {};

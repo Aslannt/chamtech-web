@@ -7,6 +7,8 @@ export type Project = {
   /** Omitted for private repositories: the case study shows screenshots instead. */
   repository?: string;
   images?: readonly { src: string; alt: string; caption: string }[];
+  /** 1200x630 preview used when the case study link is shared. */
+  ogImage?: string;
   technologies: readonly string[];
   metrics: readonly { value: string; label: string }[];
   overview: string;
@@ -158,6 +160,7 @@ export const projects = [
   {
     slug: "celeste",
     name: "Celeste",
+    ogImage: "/projects/celeste/og.jpg",
     category: "Personal AI assistant",
     description:
       "Private, local-first personal assistant: a FastAPI core on my PC with Android, web and desktop clients, Markdown memory and a voice orb, where the AI can only act through a risk-based tool router.",
@@ -226,6 +229,7 @@ export const projects = [
   {
     slug: "meeting-copilot",
     name: "Copiloto de Reuniones",
+    ogImage: "/projects/copiloto/og.jpg",
     category: "Real-time AI tool",
     description:
       "Local copilot for meetings in English: live transcription, Spanish translation and suggested replies in an always-on-top subtitle overlay, all running on the user's own machine.",

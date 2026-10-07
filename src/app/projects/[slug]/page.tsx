@@ -28,7 +28,11 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: `${project.name} | Deivid Vanegas`,
       description: project.description,
       url: `/projects/${project.slug}`,
+      ...("ogImage" in project ? { images: [{ url: project.ogImage, width: 1200, height: 630 }] } : { images: ["/opengraph-image"] }),
     },
+    ...("ogImage" in project
+      ? { twitter: { card: "summary_large_image", images: [project.ogImage] } }
+      : {}),
   };
 }
 
