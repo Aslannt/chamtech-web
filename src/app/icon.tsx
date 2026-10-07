@@ -11,17 +11,26 @@ export default function Icon() {
           width: "100%",
           height: "100%",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: 16,
-          background: "#111116",
-          color: "#A78BFA",
+          borderRadius: 14,
+          background: "#0a0b0f",
+          color: "#f3f2ee",
           fontSize: 26,
-          fontWeight: 700,
-          border: "2px solid #2A2238",
+          fontWeight: 600,
+          letterSpacing: -1,
         }}
       >
-        CT
+        DV
+        <div
+          style={{
+            width: 26,
+            height: 3,
+            marginTop: 4,
+            background: "linear-gradient(90deg, #ff7a45 0%, #e8467c 48%, #7c8cff 100%)",
+          }}
+        />
       </div>
     ),
     size,

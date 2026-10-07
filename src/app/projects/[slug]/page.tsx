@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       languages: { en: `/projects/${project.slug}`, es: `/es/projects/${project.slug}` },
     },
     openGraph: {
-      title: `${project.name} | ChamTech`,
+      title: `${project.name} | Deivid Vanegas`,
       description: project.description,
       url: `/projects/${project.slug}`,
     },

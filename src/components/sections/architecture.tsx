@@ -94,9 +94,6 @@ export function Architecture() {
               MuleSoft generates a canonical JSON file that simulates delivery to an ERP.
             </p>
           </div>
-          <span className="w-fit rounded-full border border-border px-4 py-2 font-mono text-[11px] text-muted">
-            Local simulator · Not a real ERP
-          </span>
         </div>
       </div>
     </section>

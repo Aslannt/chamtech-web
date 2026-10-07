@@ -107,6 +107,19 @@ export function Projects() {
             </article>
           ))}
         </div>
+
+        <div
+          data-reveal
+          className="mt-8 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-verified">
+            <span aria-hidden="true" className="size-1.5 rounded-full bg-verified" />
+            Verified end to end
+          </p>
+          <p className="text-sm text-muted">
+            50 automated tests · 38 Java + 12 MUnit · real API and Mule sync on Docker with PostgreSQL 17
+          </p>
+        </div>
       </div>
     </section>
   );

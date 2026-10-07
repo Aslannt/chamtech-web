@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: "%s | ChamTech",
+    template: "%s | Deivid Vanegas",
   },
   description: siteConfig.description,
   keywords: [

@@ -20,7 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: SpanishPageProps): Promise<Metadata> {
   const route = (await params).route ?? [];
   if (route.length === 0) return {
-    title: "Deivid Vanegas | Desarrollador Backend e Integración",
+    title: { absolute: "Deivid Vanegas | Desarrollador Backend e Integración" },
     description: "Portafolio profesional de Deivid Vanegas: desarrollo backend, Java, Spring Boot, MuleSoft e integración empresarial.",
     alternates: { canonical: "/es", languages: { en: "/", es: "/es" } },
   };

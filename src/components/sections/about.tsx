@@ -70,12 +70,6 @@ export function About() {
                         ))}
                     </dl>
                 </div>
-
-                <p data-reveal className="mt-16 max-w-3xl border-l-2 border-primary pl-5 text-sm leading-7 text-muted">
-                    <span className="font-semibold text-foreground">ChamTech</span> is
-                    my personal software laboratory and project ecosystem. It is not a
-                    company or commercial organization.
-                </p>
             </div>
         </section>
     );

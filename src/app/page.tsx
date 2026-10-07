@@ -7,7 +7,6 @@ import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { PlaygroundInvitation } from "@/components/sections/playground-invitation";
 import { Skills } from "@/components/sections/skills";
-import { Verification } from "@/components/sections/verification";
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <Architecture />
       <PlaygroundInvitation />
       <Projects />
-      <Verification />
       <Certifications />
       <Contact />
     </main>

@@ -42,7 +42,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between px-6 sm:px-8">
         <Link
           href={localePath(locale, "/")}
-          aria-label="ChamTech home"
+          aria-label="Deivid Vanegas home"
           className="group inline-flex items-center gap-3"
         >
           <span
@@ -54,7 +54,7 @@ export function SiteHeader() {
           <span className="flex flex-col leading-none">
             <span className="text-[15px] font-semibold tracking-tight">Deivid Vanegas</span>
             <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.22em] text-muted">
-              {t("Personal software lab")}
+              {t("Backend & Integration Developer")}
             </span>
           </span>
         </Link>

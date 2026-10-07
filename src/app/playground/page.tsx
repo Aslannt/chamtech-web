@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PlaygroundShell } from "@/components/playground/playground-shell";
 
 export const metadata: Metadata = {
-  title: "ChamTech Sync Playground | Deivid Vanegas",
+  title: "ChamTech Sync Playground",
   description:
     "Interactive simulation of a MuleSoft-to-Spring Boot order synchronization flow with pagination, correlation IDs and canonical JSON transformation.",
   alternates: { canonical: "/playground", languages: { en: "/playground", es: "/es/playground" } },

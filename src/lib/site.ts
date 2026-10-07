@@ -4,7 +4,7 @@ const fallbackUrl = vercelProductionUrl
   : "http://localhost:3000";
 
 export const siteConfig = {
-  name: "ChamTech",
+  name: "Deivid Vanegas",
   title: "Deivid Vanegas | Backend & Integration Developer",
   description:
     "Portfolio of Deivid Vanegas, Backend and Integration Developer focused on Java, Spring Boot, MuleSoft, DataWeave, REST APIs and enterprise system integration.",

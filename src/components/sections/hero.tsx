@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { IntegrationPulse } from "@/components/motion/integration-pulse";
 import { HeroCvDownloadLink } from "@/components/ui/localized-profile-links";
 
@@ -89,6 +90,16 @@ export function Hero() {
 
         <div className="hero-enter" style={{ "--delay": "300ms" } as React.CSSProperties}>
           <IntegrationPulse />
+          <Link
+            href="/playground"
+            className="group mt-4 flex items-center justify-between rounded-[10px] border border-border bg-surface/60 px-5 py-4 transition-colors hover:border-primary-bright"
+          >
+            <span>
+              <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-primary-bright">Interactive</span>
+              <span className="mt-1 block text-sm font-medium">Run this flow in the sync simulator</span>
+            </span>
+            <span aria-hidden="true" className="btn-arrow text-primary-bright group-hover:translate-x-1">→</span>
+          </Link>
         </div>
       </div>
     </section>
