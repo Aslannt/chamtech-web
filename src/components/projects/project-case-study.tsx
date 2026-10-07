@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/data/projects";
+import { siteConfig } from "@/lib/site";
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
   return (
@@ -24,14 +25,20 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
                 {project.status}
               </span>
               <div className="mt-5">
-                <a
-                  href={project.repository}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary"
-                >
-                  View repository ↗
-                </a>
+                {project.repository ? (
+                  <a
+                    href={project.repository}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-primary"
+                  >
+                    View repository ↗
+                  </a>
+                ) : (
+                  <a href={`mailto:${siteConfig.email}`} className="btn-ghost">
+                    Request a walkthrough
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -51,8 +58,23 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           </div>
         </section>
 
+        {project.images?.length ? (
+          <section aria-labelledby="gallery-title" className="mt-20 border-t border-border pt-20">
+            <h2 id="gallery-title" className="text-3xl font-light tracking-[-0.03em]">Screenshots</h2>
+            <div className="mt-8 grid gap-6">
+              {project.images.map((image) => (
+                <figure key={image.src} className="theme-dark overflow-hidden rounded-[12px] border border-border">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={image.src} alt={image.alt} loading="lazy" className="block h-auto w-full" />
+                  <figcaption className="border-t border-border px-5 py-3 text-sm text-muted">{image.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section aria-labelledby="metrics-title" className="mt-20 border-t border-border pt-20">
-          <h2 id="metrics-title" className="text-3xl font-light tracking-[-0.03em]">Verified metrics</h2>
+          <h2 id="metrics-title" className="text-3xl font-light tracking-[-0.03em]">Key figures</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {project.metrics.map((metric) => (
               <article key={metric.label} className="surface-card rounded-2xl p-6">
@@ -114,15 +136,27 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           </div>
         </section>
 
-        <section className="mt-20 flex flex-col items-start justify-between gap-6 rounded-3xl border border-primary/25 bg-primary/5 p-8 sm:flex-row sm:items-center">
-          <div>
-            <h2 className="text-2xl font-light tracking-[-0.03em]">Review the implementation</h2>
-            <p className="mt-2 text-sm leading-6 text-muted">Source code, documentation and reproducible local instructions are available on GitHub.</p>
-          </div>
-          <a href={project.repository} target="_blank" rel="noreferrer" className="shrink-0 btn-primary">
-            Open GitHub ↗
-          </a>
-        </section>
+        {project.repository ? (
+          <section className="mt-20 flex flex-col items-start justify-between gap-6 rounded-3xl border border-primary/25 bg-primary/5 p-8 sm:flex-row sm:items-center">
+            <div>
+              <h2 className="text-2xl font-light tracking-[-0.03em]">Review the implementation</h2>
+              <p className="mt-2 text-sm leading-6 text-muted">Source code, documentation and reproducible local instructions are available on GitHub.</p>
+            </div>
+            <a href={project.repository} target="_blank" rel="noreferrer" className="shrink-0 btn-primary">
+              Open GitHub ↗
+            </a>
+          </section>
+        ) : (
+          <section className="mt-20 flex flex-col items-start justify-between gap-6 rounded-3xl border border-primary/25 bg-primary/5 p-8 sm:flex-row sm:items-center">
+            <div>
+              <h2 className="text-2xl font-light tracking-[-0.03em]">Want to see it running?</h2>
+              <p className="mt-2 text-sm leading-6 text-muted">The repository is private. I can walk you through the code and a live demo.</p>
+            </div>
+            <a href={`mailto:${siteConfig.email}`} className="shrink-0 btn-primary">
+              Request a walkthrough
+            </a>
+          </section>
+        )}
       </div>
     </main>
   );

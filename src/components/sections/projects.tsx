@@ -29,7 +29,32 @@ payload.orders map (order) -> {
   },
 };
 
-function ProjectVisual({ slug, category }: { slug: string; category: string }) {
+function ProjectVisual({
+  slug,
+  category,
+  image,
+}: {
+  slug: string;
+  category: string;
+  image?: { src: string; alt: string };
+}) {
+  if (image) {
+    return (
+      <div className="theme-dark overflow-hidden rounded-[8px] border border-border">
+        <div className="flex items-center justify-between border-b border-border px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+          <span>{category}</span>
+          <span className="text-primary-bright">Screenshot</span>
+        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image.src}
+          alt={image.alt}
+          loading="lazy"
+          className="block aspect-[16/9] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+        />
+      </div>
+    );
+  }
   const snippet = snippets[slug];
   return (
     <div className="theme-dark overflow-hidden rounded-[8px] border border-border">
@@ -55,9 +80,9 @@ export function Projects() {
         <div id="projects-title">
           <SectionHeading
             eyebrow="05 / Featured Projects"
-            title="Two projects."
-            accent="One connected system."
-            description="Verified case studies that demonstrate backend engineering and enterprise integration as complementary disciplines."
+            title="Selected projects."
+            accent="From integration to AI."
+            description="Backend and integration case studies, plus the personal AI tools I build and use every day."
           />
         </div>
 
@@ -67,9 +92,13 @@ export function Projects() {
               key={project.slug}
               data-reveal
               style={{ "--delay": `${index * 140}ms` } as React.CSSProperties}
-              className="surface-card lift flex flex-col p-4 sm:p-5"
+              className="surface-card lift group flex flex-col p-4 sm:p-5"
             >
-              <ProjectVisual slug={project.slug} category={project.category} />
+              <ProjectVisual
+                slug={project.slug}
+                category={project.category}
+                image={"images" in project ? project.images[0] : undefined}
+              />
 
               <div className="flex flex-1 flex-col px-2 pb-2 pt-7">
                 <span className="inline-flex w-fit items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-verified">
@@ -99,9 +128,16 @@ export function Projects() {
                   <Link href={`/projects/${project.slug}`} className="btn-primary">
                     View case study <span aria-hidden="true" className="btn-arrow">→</span>
                   </Link>
-                  <a href={project.repository} target="_blank" rel="noreferrer" className="btn-ghost">
-                    GitHub ↗
-                  </a>
+                  {"repository" in project ? (
+                    <a href={project.repository} target="_blank" rel="noreferrer" className="btn-ghost">
+                      GitHub ↗
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-2 self-center px-2 font-mono text-[11px] text-muted">
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+                      Private repository
+                    </span>
+                  )}
                 </div>
               </div>
             </article>
