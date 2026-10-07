@@ -1,7 +1,11 @@
 const vercelProductionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-const fallbackUrl = vercelProductionUrl
-  ? `https://${vercelProductionUrl}`
-  : "http://localhost:3000";
+const primaryProductionUrl = "https://deividvanegas.vercel.app";
+const fallbackUrl =
+  process.env.VERCEL_ENV === "production"
+    ? primaryProductionUrl
+    : vercelProductionUrl
+      ? `https://${vercelProductionUrl}`
+      : "http://localhost:3000";
 
 export const siteConfig = {
   name: "Deivid Vanegas",
